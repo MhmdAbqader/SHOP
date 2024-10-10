@@ -1,0 +1,50 @@
+﻿@model Category
+
+@{
+    //ViewData["Title"] = "Edit";
+    ViewBag.PageTitle = "Category Management";
+    ViewBag.CardTitle = "Edit Category ";
+    Layout = "~/Views/Shared/_DashBoard.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Category</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditCategory">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input hidden asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea id="mytextareaTinyMce" asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <button type="submit" class="btn btn-info" @* onclick="Done()"*@>Edit Category</button>
+                <a href="/Category/Index" class="btn btn-dark"> Back To List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@*<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        tinymce.init({
+            selector: '#mytextareaTinyMce'
+        });
+    </script>
+}

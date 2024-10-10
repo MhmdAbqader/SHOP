@@ -1,0 +1,17 @@
+C:\Users\Mhmd\source\repos\SHOP\SHOPDataAccessLayer\bin\Debug\net7.0\SHOPDataAccessLayer.deps.json
+C:\Users\Mhmd\source\repos\SHOP\SHOPDataAccessLayer\bin\Debug\net7.0\SHOPDataAccessLayer.runtimeconfig.json
+C:\Users\Mhmd\source\repos\SHOP\SHOPDataAccessLayer\bin\Debug\net7.0\SHOPDataAccessLayer.dll
+C:\Users\Mhmd\source\repos\SHOP\SHOPDataAccessLayer\bin\Debug\net7.0\SHOPDataAccessLayer.pdb
+C:\Users\Mhmd\source\repos\SHOP\SHOPDataAccessLayer\bin\Debug\net7.0\SHOPModels.dll
+C:\Users\Mhmd\source\repos\SHOP\SHOPDataAccessLayer\bin\Debug\net7.0\SHOPModels.pdb
+C:\Users\Mhmd\source\repos\SHOP\SHOPDataAccessLayer\obj\Debug\net7.0\SHOPDataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\Mhmd\source\repos\SHOP\SHOPDataAccessLayer\obj\Debug\net7.0\SHOPDataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mhmd\source\repos\SHOP\SHOPDataAccessLayer\obj\Debug\net7.0\SHOPDataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\Mhmd\source\repos\SHOP\SHOPDataAccessLayer\obj\Debug\net7.0\SHOPDataAccessLayer.AssemblyInfo.cs
+C:\Users\Mhmd\source\repos\SHOP\SHOPDataAccessLayer\obj\Debug\net7.0\SHOPDataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Mhmd\source\repos\SHOP\SHOPDataAccessLayer\obj\Debug\net7.0\SHOPDataAccessLayer.csproj.CopyComplete
+C:\Users\Mhmd\source\repos\SHOP\SHOPDataAccessLayer\obj\Debug\net7.0\SHOPDataAccessLayer.dll
+C:\Users\Mhmd\source\repos\SHOP\SHOPDataAccessLayer\obj\Debug\net7.0\refint\SHOPDataAccessLayer.dll
+C:\Users\Mhmd\source\repos\SHOP\SHOPDataAccessLayer\obj\Debug\net7.0\SHOPDataAccessLayer.pdb
+C:\Users\Mhmd\source\repos\SHOP\SHOPDataAccessLayer\obj\Debug\net7.0\SHOPDataAccessLayer.genruntimeconfig.cache
+C:\Users\Mhmd\source\repos\SHOP\SHOPDataAccessLayer\obj\Debug\net7.0\ref\SHOPDataAccessLayer.dll

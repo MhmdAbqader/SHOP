@@ -1,0 +1,81 @@
+﻿@model IEnumerable<SHOPModels.Models.ApplicationUser>
+
+@{
+    ViewData["Title"] = "AllUsers";
+    Layout = "~/Views/Shared/_DashBoard.cshtml";    
+  //  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>AllUsers</h1>
+
+<p>
+    <a asp-action="Register" asp-controller="Account" asp-area="Identity">Create User</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullUserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+           
+            <th>
+                Lock/Unlock
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullUserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                    @if (item.LockoutEnd == null || item.LockoutEnd < DateTime.Now)
+                    {
+
+                        <a href="/Admin/Users/Lock_UnlockProfile/@item.Id/c" class="btn btn-success" title="Open">
+                        @*<a href="/Admin/Users/Lock_UnlockProfile/@item.Id?flag=c" class="btn btn-success" title="Open">*@
+                            <i class="fas fa-lock-open"><b>O</b></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="/Admin/Users/Lock_UnlockProfile/@item.Id?flag=o" class="btn btn-danger" title="Closed">
+                            <i class="fas fa-lock"><b>C</b></i>
+                        </a>
+                    }
+
+            </td>
+         @*   <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>*@
+        </tr>
+}
+    </tbody>
+</table>

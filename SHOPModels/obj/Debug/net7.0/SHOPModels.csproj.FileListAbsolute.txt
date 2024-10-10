@@ -1,0 +1,12 @@
+C:\Users\Mhmd\source\repos\SHOP\SHOPModels\bin\Debug\net7.0\SHOPModels.deps.json
+C:\Users\Mhmd\source\repos\SHOP\SHOPModels\bin\Debug\net7.0\SHOPModels.dll
+C:\Users\Mhmd\source\repos\SHOP\SHOPModels\bin\Debug\net7.0\SHOPModels.pdb
+C:\Users\Mhmd\source\repos\SHOP\SHOPModels\obj\Debug\net7.0\SHOPModels.csproj.AssemblyReference.cache
+C:\Users\Mhmd\source\repos\SHOP\SHOPModels\obj\Debug\net7.0\SHOPModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mhmd\source\repos\SHOP\SHOPModels\obj\Debug\net7.0\SHOPModels.AssemblyInfoInputs.cache
+C:\Users\Mhmd\source\repos\SHOP\SHOPModels\obj\Debug\net7.0\SHOPModels.AssemblyInfo.cs
+C:\Users\Mhmd\source\repos\SHOP\SHOPModels\obj\Debug\net7.0\SHOPModels.csproj.CoreCompileInputs.cache
+C:\Users\Mhmd\source\repos\SHOP\SHOPModels\obj\Debug\net7.0\SHOPModels.dll
+C:\Users\Mhmd\source\repos\SHOP\SHOPModels\obj\Debug\net7.0\refint\SHOPModels.dll
+C:\Users\Mhmd\source\repos\SHOP\SHOPModels\obj\Debug\net7.0\SHOPModels.pdb
+C:\Users\Mhmd\source\repos\SHOP\SHOPModels\obj\Debug\net7.0\ref\SHOPModels.dll

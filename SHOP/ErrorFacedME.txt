@@ -1,0 +1,41 @@
+when using scafolleding to generate identity page come out error say 
+"Package restore failed. Rolling back package changes
+
+//اهم حاجة تعمل للclear cache for package console manager
+solution ..=>
+
+1- delete the packages 
+2-1. Check the Error Details
+Start by checking the detailed error message in the Output Window in Visual Studio. This will give you more insight into what exactly is causing the package restore to fail.
+2. Clear the NuGet Cache
+Open the Package Manager Console in Visual Studio (found under Tools > NuGet Package Manager > Package Manager Console) and run the following command:
+powershell
+نسخ الكود
+dotnet nuget locals all --clear
+This will clear the NuGet cache, which can sometimes fix issues related to corrupted or outdated packages.
+3. Restore NuGet Packages Manually
+Right-click on your solution in Solution Explorer and select Restore NuGet Packages. This will attempt to restore the packages manually.
+4. Update NuGet Package Manager
+Go to Tools > Extensions and Updates > Updates > Visual Studio Gallery and ensure that the NuGet Package Manager is up to date. If it's outdated, update it and try restoring packages again.
+5. Modify Package Sources
+Check your package sources in Tools > NuGet Package Manager > Package Manager Settings > Package Sources. Make sure that the sources are valid and reachable (e.g., https://api.nuget.org/v3/index.json for the official NuGet feed).
+6. Resolve Package Conflicts
+Conflicts between package versions can cause restore failures. Inspect your csproj or packages.config file to ensure there are no conflicting versions of packages.
+7. Manually Edit the Project File
+Open the .csproj file and check for any inconsistencies or invalid references to packages. Sometimes, manually resolving conflicts or removing problematic references can help.
+8. Reinstall Packages
+Delete the packages folder located in your solution directory (if it exists), then run the restore command again:
+bash
+نسخ الكود
+dotnet restore
+Alternatively, you can use the Package Manager Console:
+powershell
+نسخ الكود
+Update-Package -reinstall
+This will reinstall all packages.
+9. Run Visual Studio as Administrator
+Some package restore issues are related to permissions. Running Visual Studio as an administrator can resolve these issues.
+10. Check for System-Specific Issues
+If the issue persists, there might be a problem with your development environment or specific configuration files. Try restoring packages on a different machine or in a clean project to isolate the issue.
+11. Check for Proxy/Firewall Issues
+If you're behind a corporate firewall or using a proxy, make sure that your network settings are correctly configured. Sometimes, the firewall or proxy might block access to the NuGet servers.

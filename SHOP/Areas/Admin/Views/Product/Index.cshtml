@@ -1,0 +1,79 @@
+﻿@*@model IEnumerable<Category>*@
+
+@*<h2>Products List ( @Model.Count() )</h2>*@
+
+@*    @{
+        if (TempData["ToastrMSG"] != null)
+        {
+
+            <h3>@TempData["ToastrMSG"]</h3>
+
+        }
+    }*@
+
+<partial name="_ToastrPartialView" /> <!--this line i can put it above of render body in dashboard layout to avoid repeat it in all indexes-->
+
+<div>
+    <a asp-action="Create" asp-controller="Product" asp-area="Admin" class="btn btn-primary">Create Product</a>
+</div>
+
+<br />
+<table class="table table-hover" width="100%" id="myTableOfDataTable">
+ <thead>
+        <tr>
+            <th>Name</th>
+            <th>Desciption</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Category</th>
+            <th>Actions</th>
+
+        </tr>
+ </thead>  
+</table>
+
+
+    @*we can create a separated javascript file in JS Folder then call it here like this *@
+     @section Scripts{
+     <script src="~/js/myProductDataTableFile.js" type="text/javascript"></script>
+     }
+
+
+@section myDataTable{
+@*<script>
+    var myDataTableTable;
+    $(document).ready(function(){        
+    loadData();
+    });
+    
+    
+    // please please plz plz plz don't forget ; at in any thing in js 
+    // //  
+    // انا بقالي نص ساعة واكتر مش عارف فين المشكلة بسب ال ;  خلي بالك عشان بتعمل مشكلة ف الجافاسكربيت وخصوصا الdatatable  
+
+        function loadData(){
+
+            myDataTableTable = $("#myTableOfDataTable").DataTable({
+            "ajax":{
+                    "url": "/Admin/Product/GetDataByDatatable"
+            },
+            "columns":[
+                {"data":"name"},
+                {"data":"description"},
+                {"data":"price"},
+                {"data":"imageUrl"},
+                {"data":"category.name"},               
+                {
+                    "data":"id",
+                    "render":function(data){
+                            return `
+                                 <a href="/Admin/Product/Edit/${data}" class="btn btn-dark">Edit</a>
+                                 <a href="/Admin/Product/Delete/${data}" class="btn btn-danger">Delete</a>
+                            `
+                    }
+                }
+            ]
+            });
+        }
+</script>*@
+}

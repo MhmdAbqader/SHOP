@@ -1,0 +1,107 @@
+﻿@model SHOPModels.ViewModels.ProductViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    ViewBag.PageTitle = "Product Management";
+    ViewBag.CardTitle = "Create Product ";
+    Layout = "~/Views/Shared/_DashBoard.cshtml";
+}
+
+
+<hr />
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post" asp-action="Create" asp-controller="Product" asp-area="Admin" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+          
+                <div class="form-group">
+                    <label asp-for="Product.Name" class="control-label"></label>
+                    <input asp-for="Product.Name" class="form-control" />
+                    <span asp-validation-for="Product.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Product.ImageUrl" class="control-label"></label>
+                    <input type="file" name="productImage" class="form-control" onchange="showImg(event)" />
+                    <span asp-validation-for="Product.ImageUrl" class="text-danger"></span>
+                </div>
+               
+                <div class="form-group">
+                    <label asp-for="Product.Price" class="control-label"></label>
+                    <input asp-for="Product.Price" class="form-control" />
+                    <span asp-validation-for="Product.Price" class="text-danger"></span>
+                </div>         
+
+                <div class="form-group">
+                    <label asp-for="Product.CategoryId" class="control-label"></label>
+                    <select asp-for="Product.CategoryId" asp-items="Model.CategoriesDDList" class="form-control">
+                        <option selected disabled>select Category</option>
+                    </select>
+                    @*<span asp-validation-for="Product.Description" class="text-danger"></span>*@
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Product.Description" class="control-label"></label>
+                    <textarea id="mytextareaTinyMce" asp-for="Product.Description" class="form-control"></textarea>
+                    <span asp-validation-for="Product.Description" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    @* <input type="submit" value="Create" class="btn btn-primary" />*@
+                    <button type="submit" class="btn btn-info" @* onclick="Done()"*@>Create Product</button>
+                    <a href="/Admin/Product/Index" class="btn btn-dark"> Back To List</a>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8">
+            <img id="showImg" src="" width="200" height="200" style="display:none"/>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section myJS{
+    <script>
+        function Done() {
+            alert("Successfully Category Created ");
+        }
+
+    </script>
+}
+
+@* -------------------- in the below line i added client side validation before going to server --------------*@
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        tinymce.init({
+            selector: '#mytextareaTinyMce',
+            width: 340,
+            height: 200,
+        });
+
+        //var showImg = function(event){
+        //    var fillImg = document.getElementById("showImg");
+        //    fillImg.src = URL.createObjectURL(event.target.files[0]);
+        //}
+
+        // so important code it the first time i do that 
+        function showImg(event) {
+            var fillImg = document.getElementById("showImg");
+            fillImg.style.display='block';
+            fillImg.src = URL.createObjectURL(event.target.files[0]);
+            //alert(event.target.files[0]);
+            //alert(URL.createObjectURL(event.target.files[0]));
+        }
+    </script>
+    @*<partial name="_ValidationScriptsPartial"></partial>*@ // already working well
+}

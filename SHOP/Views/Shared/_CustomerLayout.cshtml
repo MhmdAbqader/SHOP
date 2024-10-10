@@ -1,0 +1,124 @@
+﻿@using SHOPModels.Repositories;
+@using System.Security.Claims;
+@inject IUnitOfWork _uintOfWork;
+
+<!-- session configuration to fill Counter of cart-->
+@using Microsoft.AspNetCore.Http;
+@using Utilities;
+@inject IHttpContextAccessor httpContextAccessor;
+
+@{
+    int CartCount = 0;
+    var claimIdentity = (ClaimsIdentity)User.Identity;
+    var CurrentUser = claimIdentity?.FindFirst(ClaimTypes.NameIdentifier);
+
+    if (CurrentUser != null)
+    {
+        string uid = CurrentUser.Value;
+         CartCount = _uintOfWork.ShoppingCartRepository.GetAll(a => a.UserId == uid).Count();
+    }
+
+ }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Shop Homepage</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/CustomerLayout/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="#!">SHOP</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/customer/home/index">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#!">About</a></li>
+                   
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole(SDRoles.AdminRole))
+                        {
+                            <li class="nav-item"><a class="nav-link active" href="/Admin/Dashboard/Index">My Dashboard</a></li>
+                        }
+                        else
+                        {
+                           <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Options</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#!">My Orders</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#!">Edit Profile</a></li>
+                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                            </ul>
+                           </li>
+                        }
+                    }
+                </ul>
+
+                <partial name="_LoginPartial" />
+            
+@*                    <a class="btn btn-outline-dark" asp-action="AllProductsCart" asp-controller="Cart" asp-area="Customer">
+                        <i class="bi-cart-fill me-1"></i>
+                        Cart
+          
+                    @if (CartCount >= 0)
+                    {
+                    
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">@CartCount</span>
+                    }
+                    else {
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    }         
+
+                </a>*@
+                @*another Solution by Session*@
+
+          @*      <a class="btn btn-outline-dark" asp-action="AllProductsCart" asp-controller="Cart" asp-area="Customer">
+                        <i class="bi-cart-fill me-1"></i>
+                    Cart(@(httpContextAccessor.HttpContext.Session.GetInt32("Cart") ?? 0))
+                </a>*@
+                @*another Solution by ViewComponent*@
+
+                <a class="btn btn-outline-dark" asp-action="AllProductsCart" asp-controller="Cart" asp-area="Customer">
+                    <i class="bi-cart-fill me-1"></i> 
+                    Cart @await Component.InvokeAsync("CartViewC")@*/* pass the name of the class you did your Logic*/*@
+                </a>
+
+            </div>
+        </div>
+    </nav>
+    <!-- Header-->
+    <header class="bg-dark py-1" style="background-color: rgb(52 75 99) !important; height:200px">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Welcome to our Shop  </h1>
+                <p class="lead fw-normal text-white-50 mb-0">You Can Find here What you Need (:</p>
+            </div>
+        </div>
+    </header>
+    <!-- Section-->
+    @RenderBody()
+    <!-- Footer-->
+    <footer class="py-1 bg-dark" style="background-color: rgb(52 75 99) !important;height:40px;">
+        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2024</p></div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="~/CustomerLayout/js/scripts.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("myJS", required: false)
+    @await RenderSectionAsync("myDataTable", required: false)
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Category>
+
+<h2>Categories List ( @Model.Count() )</h2>
+ 
+@*    @{
+        if (TempData["ToastrMSG"] != null)
+        {
+
+            <h3>@TempData["ToastrMSG"]</h3>
+
+        }
+    }*@
+
+<partial name="_ToastrPartialView" /> <!--this line i can put it above of render body in dashboard layout to avoid repeat it in all indexes-->
+
+<div>
+    <a asp-action="CreateCategory" asp-controller="Category" class="btn btn-primary">Create Category</a>
+</div>
+
+<br />
+<table class="table table-hover" width="100%">
+  
+    <thead class="text-bold">
+        <tr>
+        <th>Name</th>
+        <th>Desciption</th>
+        <th>Created On </th>
+        <th>Edit Option</th>
+        <th>Delete Option</th>
+    </tr>
+    </thead>
+    @foreach (var cat in Model)
+    {
+        <tr>
+            <td>@cat.Name</td>
+            <td>@Html.Raw(cat.Description)</td> @* i will use @html.Raw() to skip any html saved to database when i use advanced textArea*@
+            <td>@cat.CreatedTime</td>
+
+            <td>
+                <a asp-action="EditCategory" asp-controller="Category" asp-route-id="@cat.Id" class="btn btn-info">Edit</a>
+            </td>
+            <td>
+                @* <a asp-action="DeleteCategory" asp-controller="Category" asp-route-myID="@cat.Id" class="btn btn-danger">Delete</a>*@
+                <a asp-action="DeleteCategory" asp-controller="Category" asp-route-myID="@cat.Id" class="btn btn-danger">Delete</a>
+
+            </td>
+        </tr>
+    }
+
+</table>
