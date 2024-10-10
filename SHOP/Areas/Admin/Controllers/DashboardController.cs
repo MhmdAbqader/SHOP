@@ -20,7 +20,7 @@ namespace SHOP.Areas.Admin.Controllers
         {
             ViewBag.Orders = _unitOfWork.OrderHeaderRepository.GetAll().Count();
             ViewBag.ApprovedOrders = _unitOfWork.OrderHeaderRepository.GetAll(x => x.OrderStatus == StatusType.Approved).Count();
-            ViewBag.Users =8;
+            ViewBag.Users =7; // i will do repo to treate with User operation such as getall getbyid lock profile and etc....
             ViewBag.Products = _unitOfWork.ProductRepository.GetAll().Count();
             return View();
         }
